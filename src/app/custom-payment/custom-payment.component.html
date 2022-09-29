@@ -1,0 +1,41 @@
+<div class="container align-content-center" [formGroup]="paymentElementForm">
+  <div class="row col-md-6 offset-md-3 col-sm-6  mt-5 bg-light px-5 pt-5 rounded-5 shadow-lg mb-5">
+    <p>
+      <mat-form-field class="w-100" appearance="outline">
+        <input matInput placeholder="name" formControlName="name" />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="w-100" appearance="outline">
+        <input matInput placeholder="Email" type="email" formControlName="email" />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="w-100" appearance="outline">
+        <input matInput placeholder="Address" formControlName="address" />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="w-100" appearance="outline">
+        <input matInput placeholder="ZIP Code" formControlName="zipcode" />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="w-100" appearance="outline">
+        <input matInput placeholder="city" formControlName="city" />
+      </mat-form-field>
+    </p>
+    <p>
+      <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret">
+        <ngx-stripe-payment [clientSecret]="clientSecret">
+        </ngx-stripe-payment>
+      </ng-container>
+    </p>
+    <p class="row">
+      <button class="col-3 me-2 btn btn-primary px-3 py-1" mat-raised-button mat-button color="accent"  (click)="pay()">PAY</button>
+      <button class="col-3 me-2 btn btn-success px-3 py-1" mat-raised-button mat-button color="accent"  (click)="confirmPaymentIntent()">CHECK</button>
+      <button class="col-3 me-2 btn btn-secondary px-3 py-1" mat-raised-button mat-button color="accent"  (click)="setupPaymentIntent()">SETUP</button>
+    </p>
+  </div>
+
+</div>
